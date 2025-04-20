@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_a45012ca9ae9daba2034ab4c3bbba69a {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.66.2/L.Control.Locate.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.66.2/L.Control.Locate.min.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_a45012ca9ae9daba2034ab4c3bbba69a" ></div>
+        
+
+<div style="position:absolute;bottom:20px;right:10px;z-index:1000;background:rgba(255,255,255,0.9);padding:10px;">
+<input id="slide" type="range" min="0" max="1" step="0.1" value="1" onchange="updateOpacity(this.value)"></div></body>
+<script>
+    
+    
+            var map_a45012ca9ae9daba2034ab4c3bbba69a = L.map(
+                "map_a45012ca9ae9daba2034ab4c3bbba69a",
+                {
+                    center: [35.010888, 135.759509],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+            L.control.scale().addTo(map_a45012ca9ae9daba2034ab4c3bbba69a);
+
+            
+
+        
+    
+            var tile_layer_03aa186a123af270c6017a9bd658c435 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 20, "minZoom": 13, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_03aa186a123af270c6017a9bd658c435.addTo(map_a45012ca9ae9daba2034ab4c3bbba69a);
+        
+    
+            var tile_layer_59356cbe68496e4df091f9e6d5d3f82e = L.tileLayer(
+                "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg",
+                {"attribution": "\u56fd\u571f\u5730\u7406\u9662+GRUS\u753b\u50cf\uff08\u00a9 Axelspace\uff09", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 0.75, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            var tile_layer_bdb48e25ee47896a411c86dfbd85efca = L.tileLayer(
+                "https://cyberjapandata.gsi.go.jp/xyz/hillshademap/{z}/{x}/{y}.png",
+                {"attribution": "\u56fd\u571f\u5730\u7406\u9662", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 0.75, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            var tile_layer_98c066ee9d3fad9c00d726247062d636 = L.tileLayer(
+                "https://cyberjapandata.gsi.go.jp/xyz/ort_USA10/{z}/{x}/{y}.png",
+                {"attribution": "\u56fd\u571f\u5730\u7406\u9662", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 0.75, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            var tile_layer_e7f3f845b64f8b0a8948b0d7249c694a = L.tileLayer(
+                "https://cyberjapandata.gsi.go.jp/xyz/ort_USA10/{z}/{x}/{y}.png",
+                {"attribution": "\u56fd\u571f\u5730\u7406\u9662", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 0.75, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            var tile_layer_661add8e36c82ab896892b73305fda5a = L.tileLayer(
+                "https://www.arc.ritsumei.ac.jp/archive01/theater/image/PB/geo/maps/meisai_sougou/{z}/{x}/{y}.png",
+                {"attribution": "\u8fd1\u4ee3\u4eac\u90fd\u30aa\u30fc\u30d0\u30fc\u30ec\u30a4\u30de\u30c3\u30d7", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 0.75, "subdomains": "abc", "tms": true}
+            );
+        
+    
+            var tile_layer_72c1dcc97a10248ffcb2852ba23502b4 = L.tileLayer(
+                "https://www.arc.ritsumei.ac.jp/archive01/theater/image/PB/geo/maps/meisai_hasegawa/{z}/{x}/{y}.png",
+                {"attribution": "\u8fd1\u4ee3\u4eac\u90fd\u30aa\u30fc\u30d0\u30fc\u30ec\u30a4\u30de\u30c3\u30d7", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 0.75, "subdomains": "abc", "tms": true}
+            );
+        
+    
+            var tile_layer_e61302543a92d2578eb0c29b26c54513 = L.tileLayer(
+                "https://www.arc.ritsumei.ac.jp/archive01/theater/image/PB/geo/maps/s28/{z}/{x}/{y}.png",
+                {"attribution": "\u8fd1\u4ee3\u4eac\u90fd\u30aa\u30fc\u30d0\u30fc\u30ec\u30a4\u30de\u30c3\u30d7", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 0.75, "subdomains": "abc", "tms": true}
+            );
+        
+    
+            var tile_layer_796d128b6477ab534090f1012a78fe26 = L.tileLayer(
+                "https://www.arc.ritsumei.ac.jp/archive01/theater/image/PB/geo/maps/s10/{z}/{x}/{y}.png",
+                {"attribution": "\u8fd1\u4ee3\u4eac\u90fd\u30aa\u30fc\u30d0\u30fc\u30ec\u30a4\u30de\u30c3\u30d7", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 0.75, "subdomains": "abc", "tms": true}
+            );
+        
+    
+            var tile_layer_4927ab1821de6d199f272daaf5b699a7 = L.tileLayer(
+                "https://www.arc.ritsumei.ac.jp/archive01/theater/image/PB/geo/maps/s4/{z}/{x}/{y}.png",
+                {"attribution": "\u8fd1\u4ee3\u4eac\u90fd\u30aa\u30fc\u30d0\u30fc\u30ec\u30a4\u30de\u30c3\u30d7", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 0.75, "subdomains": "abc", "tms": true}
+            );
+        
+    
+            var tile_layer_35153b574347cb99b1924edee250279e = L.tileLayer(
+                "https://www.arc.ritsumei.ac.jp/archive01/theater/image/PB/geo/maps/mono_s4/{z}/{x}/{y}.png",
+                {"attribution": "\u8fd1\u4ee3\u4eac\u90fd\u30aa\u30fc\u30d0\u30fc\u30ec\u30a4\u30de\u30c3\u30d7", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 0.75, "subdomains": "abc", "tms": true}
+            );
+        
+    
+            var tile_layer_a794ff37c504196ede67409ac6f92462 = L.tileLayer(
+                "https://www.arc.ritsumei.ac.jp/archive01/theater/image/PB/geo/maps/mono_t11/{z}/{x}/{y}.png",
+                {"attribution": "\u8fd1\u4ee3\u4eac\u90fd\u30aa\u30fc\u30d0\u30fc\u30ec\u30a4\u30de\u30c3\u30d7", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 0.75, "subdomains": "abc", "tms": true}
+            );
+        
+    
+            var tile_layer_8b3c63335141232d07e14da20087eb83 = L.tileLayer(
+                "https://www.arc.ritsumei.ac.jp/archive01/theater/image/PB/geo/maps/seisiki/{z}/{x}/{y}.png",
+                {"attribution": "\u8fd1\u4ee3\u4eac\u90fd\u30aa\u30fc\u30d0\u30fc\u30ec\u30a4\u30de\u30c3\u30d7", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 0.75, "subdomains": "abc", "tms": true}
+            );
+        
+    
+            var tile_layer_a259e9c5263307f2e3cb7ae71d67f007 = L.tileLayer(
+                "https://www.arc.ritsumei.ac.jp/archive01/theater/image/PB/geo/maps/kasei/{z}/{x}/{y}.png",
+                {"attribution": "\u8fd1\u4ee3\u4eac\u90fd\u30aa\u30fc\u30d0\u30fc\u30ec\u30a4\u30de\u30c3\u30d7", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 0.75, "subdomains": "abc", "tms": true}
+            );
+        
+    
+            var tile_layer_f46a30ae3d23ccd948681f010890638b = L.tileLayer(
+                "https://ktgis.net/kjmapw/kjtilemap/tokyo50/2man/{z}/{x}/{y}.png",
+                {"attribution": "\u4eca\u6614\u30de\u30c3\u30d7 on the web", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": true}
+            );
+        
+    
+            var tile_layer_47b9992364c2fe6e923f00c88ad43e88 = L.tileLayer(
+                "https://ktgis.net/kjmapw/kjtilemap/keihansin/2man/{z}/{x}/{y}.png",
+                {"attribution": "\u4eca\u6614\u30de\u30c3\u30d7 on the web", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": true}
+            );
+        
+    
+            var layer_control_628e81325d8061dec5e42bffa66d1593_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_03aa186a123af270c6017a9bd658c435,
+                },
+                overlays :  {
+                    "\u5168\u56fd\u6700\u65b0\u5199\u771f(\u30b7\u30fc\u30e0\u30ec\u30b9)" : tile_layer_59356cbe68496e4df091f9e6d5d3f82e,
+                    "\u56fd\u571f\u5730\u7406\u9662 \u9670\u5f71\u8d77\u4f0f\u56f3" : tile_layer_bdb48e25ee47896a411c86dfbd85efca,
+                    "\u56fd\u571f\u5730\u7406\u9662 \u7a7a\u4e2d\u5199\u771f\uff081945\u5e74\uff5e1950\u5e74\uff09" : tile_layer_98c066ee9d3fad9c00d726247062d636,
+                    "\u56fd\u571f\u5730\u7406\u9662 \u7a7a\u4e2d\u5199\u771f\uff081936\u5e74\uff5e1942\u5e74\u9803 \u6771\u4eac\u5927\u962a\uff09" : tile_layer_e7f3f845b64f8b0a8948b0d7249c694a,
+                    "\u662d\u548c26\u5e74\u9803\u4eac\u90fd\u5e02\u660e\u7d30\u56f3(\u7dcf\u5408\u8cc7\u6599\u9928\u7248)\u3010around 1951\u3011" : tile_layer_661add8e36c82ab896892b73305fda5a,
+                    "\u662d\u548c2\u5e74\u9803\u4eac\u90fd\u5e02\u660e\u7d30\u56f3(\u9577\u8c37\u5ddd\u5bb6\u7248)\u3010around 1926\u3011" : tile_layer_72c1dcc97a10248ffcb2852ba23502b4,
+                    "\u662d\u548c28\u5e74(\u90fd\u5e02\u8a08\u753b)\u30101953\u3011" : tile_layer_e61302543a92d2578eb0c29b26c54513,
+                    "\u662d\u548c10\u5e74(\u90fd\u5e02\u8a08\u753b)\u30101935\u3011" : tile_layer_796d128b6477ab534090f1012a78fe26,
+                    "\u662d\u548c4\u5e74(\u90fd\u5e02\u8a08\u753b)\u30101929\u3011" : tile_layer_4927ab1821de6d199f272daaf5b699a7,
+                    "\u662d\u548c4\u5e74mono(\u90fd\u5e02\u8a08\u753b)\u30101929\u3011" : tile_layer_35153b574347cb99b1924edee250279e,
+                    "\u5927\u6b6311\u5e74mono(\u90fd\u5e02\u8a08\u753b)\u30101922\u3011" : tile_layer_a794ff37c504196ede67409ac6f92462,
+                    "\u5927\u6b63\u5143\u5e74(\u6b63\u5f0f\u56f3)\u30101912\u3011" : tile_layer_8b3c63335141232d07e14da20087eb83,
+                    "\u660e\u6cbb25\u5e74(\u4eee\u88fd\u56f3)\u30101892\u3011" : tile_layer_a259e9c5263307f2e3cb7ae71d67f007,
+                    "\u4eca\u6614\u30de\u30c3\u30d7 \u9996\u90fd\u570f 1896-1909\u5e74" : tile_layer_f46a30ae3d23ccd948681f010890638b,
+                    "\u4eca\u6614\u30de\u30c3\u30d7 \u4eac\u962a\u795e\u570f 1892-1910\u5e74" : tile_layer_47b9992364c2fe6e923f00c88ad43e88,
+                },
+            };
+            let layer_control_628e81325d8061dec5e42bffa66d1593 = L.control.layers(
+                layer_control_628e81325d8061dec5e42bffa66d1593_layers.base_layers,
+                layer_control_628e81325d8061dec5e42bffa66d1593_layers.overlays,
+                {"autoZIndex": true, "collapsed": true, "position": "topright"}
+            ).addTo(map_a45012ca9ae9daba2034ab4c3bbba69a);
+
+        
+    
+            var locate_control_d0e12b6c6692b02ddbe4929ee2afb3b2 = L.control.locate(
+                {}
+            ).addTo(map_a45012ca9ae9daba2034ab4c3bbba69a);
+            
+        
+</script>
+<script>function updateOpacity(value) {tile_layer_59356cbe68496e4df091f9e6d5d3f82e.setOpacity(value);tile_layer_bdb48e25ee47896a411c86dfbd85efca.setOpacity(value);tile_layer_98c066ee9d3fad9c00d726247062d636.setOpacity(value);tile_layer_e7f3f845b64f8b0a8948b0d7249c694a.setOpacity(value);tile_layer_661add8e36c82ab896892b73305fda5a.setOpacity(value);tile_layer_72c1dcc97a10248ffcb2852ba23502b4.setOpacity(value);tile_layer_e61302543a92d2578eb0c29b26c54513.setOpacity(value);tile_layer_796d128b6477ab534090f1012a78fe26.setOpacity(value);tile_layer_4927ab1821de6d199f272daaf5b699a7.setOpacity(value);tile_layer_35153b574347cb99b1924edee250279e.setOpacity(value);tile_layer_a794ff37c504196ede67409ac6f92462.setOpacity(value);tile_layer_8b3c63335141232d07e14da20087eb83.setOpacity(value);tile_layer_a259e9c5263307f2e3cb7ae71d67f007.setOpacity(value);tile_layer_f46a30ae3d23ccd948681f010890638b.setOpacity(value);tile_layer_47b9992364c2fe6e923f00c88ad43e88.setOpacity(value);}</script></html>
