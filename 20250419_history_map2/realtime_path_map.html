@@ -25,7 +25,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_5c840fcf04eb78eb6e39ab81d29f6d9c {
+                #map_731cbd5e1cf62f83c923ec230d04857a {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -35,19 +35,46 @@
                 .leaflet-container { font-size: 1rem; }
             </style>
         
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-realtime/2.2.0/leaflet-realtime.js"></script>
 </head>
 <body>
     
     
-            <div class="folium-map" id="map_5c840fcf04eb78eb6e39ab81d29f6d9c" ></div>
+<script>
+window.map = element_b2c812161c03bacd5b1e6c09dee2a176;
+</script>
+    
+<script>
+let path = [];
+function handleLocationUpdate(position) {
+    const lat = position.coords.latitude;
+    const lng = position.coords.longitude;
+    const timestamp = new Date().toISOString();
+    path.push([lat, lng]);
+    const polyline = L.polyline(path, {color: 'red'}).addTo(window.map);
+    window.map.panTo(new L.LatLng(lat, lng));
+}
+function handleLocationError(error) {
+    console.error('Location error:', error);
+}
+if (navigator.geolocation) {
+    navigator.geolocation.watchPosition(handleLocationUpdate, handleLocationError, {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+    });
+} else {
+    console.error('Geolocation is not supported by this browser.');
+}
+</script>
+    
+            <div class="folium-map" id="map_731cbd5e1cf62f83c923ec230d04857a" ></div>
         
 </body>
 <script>
     
     
-            var map_5c840fcf04eb78eb6e39ab81d29f6d9c = L.map(
-                "map_5c840fcf04eb78eb6e39ab81d29f6d9c",
+            var map_731cbd5e1cf62f83c923ec230d04857a = L.map(
+                "map_731cbd5e1cf62f83c923ec230d04857a",
                 {
                     center: [35.681236, 139.767125],
                     crs: L.CRS.EPSG3857,
@@ -61,29 +88,13 @@
 
         
     
-            var tile_layer_5727be68f31bb2ba453ab503b1016443 = L.tileLayer(
+            var tile_layer_a2b4ea5a9e3b9334283ddf90b0476ac7 = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
             );
         
     
-            tile_layer_5727be68f31bb2ba453ab503b1016443.addTo(map_5c840fcf04eb78eb6e39ab81d29f6d9c);
-        
-    
-            var realtime_a4da67c5dc7df75480ffcec865adb36f_options = {"interval": 1000, "removeMissing": false, "start": true};
-            
-            realtime_a4da67c5dc7df75480ffcec865adb36f_options["getFeatureId"] = <function <lambda> at 0x13af8cea0>;
-            
-
-            var realtime_a4da67c5dc7df75480ffcec865adb36f = L.realtime(
-            "/realtime_path.js",
-            realtime_a4da67c5dc7df75480ffcec865adb36f_options
-            );
-            map_5c840fcf04eb78eb6e39ab81d29f6d9c.addLayer(
-                realtime_a4da67c5dc7df75480ffcec865adb36f._container);
-        
-    
-            realtime_a4da67c5dc7df75480ffcec865adb36f.addTo(map_5c840fcf04eb78eb6e39ab81d29f6d9c);
+            tile_layer_a2b4ea5a9e3b9334283ddf90b0476ac7.addTo(map_731cbd5e1cf62f83c923ec230d04857a);
         
 </script>
 </html>
