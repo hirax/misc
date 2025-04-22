@@ -25,7 +25,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_c693a0de8c67cb887ef842cc0b4460f8 {
+                #map_5c840fcf04eb78eb6e39ab81d29f6d9c {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -40,14 +40,14 @@
 <body>
     
     
-            <div class="folium-map" id="map_c693a0de8c67cb887ef842cc0b4460f8" ></div>
+            <div class="folium-map" id="map_5c840fcf04eb78eb6e39ab81d29f6d9c" ></div>
         
 </body>
 <script>
     
     
-            var map_c693a0de8c67cb887ef842cc0b4460f8 = L.map(
-                "map_c693a0de8c67cb887ef842cc0b4460f8",
+            var map_5c840fcf04eb78eb6e39ab81d29f6d9c = L.map(
+                "map_5c840fcf04eb78eb6e39ab81d29f6d9c",
                 {
                     center: [35.681236, 139.767125],
                     crs: L.CRS.EPSG3857,
@@ -61,29 +61,29 @@
 
         
     
-            var tile_layer_500be44fa1d970b20534c0eaf61a0ae2 = L.tileLayer(
+            var tile_layer_5727be68f31bb2ba453ab503b1016443 = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
             );
         
     
-            tile_layer_500be44fa1d970b20534c0eaf61a0ae2.addTo(map_c693a0de8c67cb887ef842cc0b4460f8);
+            tile_layer_5727be68f31bb2ba453ab503b1016443.addTo(map_5c840fcf04eb78eb6e39ab81d29f6d9c);
         
     
-            var realtime_0ef5c56440e3971277cd6c232f6a879e_options = {"interval": 1000, "removeMissing": false, "start": true};
+            var realtime_a4da67c5dc7df75480ffcec865adb36f_options = {"interval": 1000, "removeMissing": false, "start": true};
             
-            realtime_0ef5c56440e3971277cd6c232f6a879e_options["getFeatureId"] = <function <lambda> at 0x13af8e200>;
+            realtime_a4da67c5dc7df75480ffcec865adb36f_options["getFeatureId"] = <function <lambda> at 0x13af8cea0>;
             
 
-            var realtime_0ef5c56440e3971277cd6c232f6a879e = L.realtime(
-            "\nlet path = [];\nfunction handleLocationUpdate(position) {\n    const lat = position.coords.latitude;\n    const lng = position.coords.longitude;\n    const timestamp = new Date().toISOString();\n    \n    // \u5ea7\u6a19\u3092\u30d1\u30b9\u306b\u8ffd\u52a0\n    path.push([lat, lng]);\n    \n    // \u30b5\u30fc\u30d0\u30fc\u306b\u9001\u4fe1\u3059\u308b\u30c7\u30fc\u30bf\n    const data = {\n        type: \u0027Feature\u0027,\n        geometry: {\n            type: \u0027LineString\u0027,\n            coordinates: path.map(coord =\u003e [coord[1], coord[0]])\n        },\n        properties: {\n            time: timestamp\n        }\n    };\n    \n    // Folium Realtime\u306b\u30c7\u30fc\u30bf\u3092\u9001\u4fe1\n    window.dispatchEvent(new CustomEvent(\u0027folium-realtime-update\u0027, {\n        detail: data\n    }));\n}\n\n// \u4f4d\u7f6e\u60c5\u5831\u53d6\u5f97\u30a8\u30e9\u30fc\u51e6\u7406\nfunction handleLocationError(error) {\n    console.error(\u0027Location error:\u0027, error);\n}\n\n// \u4f4d\u7f6e\u60c5\u5831\u306e\u76e3\u8996\u3092\u958b\u59cb\nif (navigator.geolocation) {\n    navigator.geolocation.watchPosition(handleLocationUpdate, handleLocationError, {\n        enableHighAccuracy: true,\n        timeout: 5000,\n        maximumAge: 0\n    });\n} else {\n    console.error(\u0027Geolocation is not supported by this browser.\u0027);\n}\n",
-            realtime_0ef5c56440e3971277cd6c232f6a879e_options
+            var realtime_a4da67c5dc7df75480ffcec865adb36f = L.realtime(
+            "/realtime_path.js",
+            realtime_a4da67c5dc7df75480ffcec865adb36f_options
             );
-            map_c693a0de8c67cb887ef842cc0b4460f8.addLayer(
-                realtime_0ef5c56440e3971277cd6c232f6a879e._container);
+            map_5c840fcf04eb78eb6e39ab81d29f6d9c.addLayer(
+                realtime_a4da67c5dc7df75480ffcec865adb36f._container);
         
     
-            realtime_0ef5c56440e3971277cd6c232f6a879e.addTo(map_c693a0de8c67cb887ef842cc0b4460f8);
+            realtime_a4da67c5dc7df75480ffcec865adb36f.addTo(map_5c840fcf04eb78eb6e39ab81d29f6d9c);
         
 </script>
 </html>
