@@ -25,7 +25,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_731cbd5e1cf62f83c923ec230d04857a {
+                #map_6ebdf480c01f4685eead9ad0ee35facb {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -35,47 +35,24 @@
                 .leaflet-container { font-size: 1rem; }
             </style>
         
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.66.2/L.Control.Locate.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.66.2/L.Control.Locate.min.css"/>
 </head>
 <body>
     
     
-    
-<script>
-let path = [];
-function handleLocationUpdate(position) {
-    const lat = position.coords.latitude;
-    const lng = position.coords.longitude;
-    const timestamp = new Date().toISOString();
-    path.push([lat, lng]);
-    const polyline = L.polyline(path, {color: 'red'}).addTo(window.map);
-    window.map.panTo(new L.LatLng(lat, lng));
-}
-function handleLocationError(error) {
-    console.error('Location error:', error);
-}
-if (navigator.geolocation) {
-    navigator.geolocation.watchPosition(handleLocationUpdate, handleLocationError, {
-        enableHighAccuracy: true,
-        timeout: 5000,
-        maximumAge: 0
-    });
-} else {
-    console.error('Geolocation is not supported by this browser.');
-}
-</script>
-    
-            <div class="folium-map" id="map_731cbd5e1cf62f83c923ec230d04857a" ></div>
+            <div class="folium-map" id="map_6ebdf480c01f4685eead9ad0ee35facb" ></div>
         
 </body>
 <script>
     
     
-            var map_731cbd5e1cf62f83c923ec230d04857a = L.map(
-                "map_731cbd5e1cf62f83c923ec230d04857a",
+            var map_6ebdf480c01f4685eead9ad0ee35facb = L.map(
+                "map_6ebdf480c01f4685eead9ad0ee35facb",
                 {
-                    center: [35.681236, 139.767125],
+                    center: [35.010888, 135.759509],
                     crs: L.CRS.EPSG3857,
-                    zoom: 15,
+                    zoom: 10,
                     zoomControl: true,
                     preferCanvas: false,
                 }
@@ -85,17 +62,79 @@ if (navigator.geolocation) {
 
         
     
-            var tile_layer_a2b4ea5a9e3b9334283ddf90b0476ac7 = L.tileLayer(
+            var tile_layer_40dc763386ccf49fed4db24947be59ba = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
             );
         
     
-            tile_layer_a2b4ea5a9e3b9334283ddf90b0476ac7.addTo(map_731cbd5e1cf62f83c923ec230d04857a);
+            tile_layer_40dc763386ccf49fed4db24947be59ba.addTo(map_6ebdf480c01f4685eead9ad0ee35facb);
+        
+    
+            var locate_control_bf343cff5d759cd6315c42254b0c5939 = L.control.locate(
+                {}
+            ).addTo(map_6ebdf480c01f4685eead9ad0ee35facb);
+            
         
 </script>
-    <script>
-window.map =map_731cbd5e1cf62f83c923ec230d04857a;
-</script>
 
+<script>
+let path = [];
+function handleLocationUpdate(position) {
+    const lat = position.coords.latitude;
+    const lng = position.coords.longitude;
+    const timestamp = new Date().toISOString();
+    path.push([lat, lng]);
+    const polyline = L.polyline(path, {color: 'red'}).addTo(window.map);
+    window.map.panTo(new L.LatLng(lat, lng));}
+function handleLocationError(error) {console.error('Location error:', error);}
+if (navigator.geolocation) {
+    navigator.geolocation.watchPosition(handleLocationUpdate,
+    handleLocationError, {
+        enableHighAccuracy: true,
+        timeout: 5000,maximumAge: 0
+    });} else {console.error('Geolocation is not supported.');}
+window.map = map_6ebdf480c01f4685eead9ad0ee35facb;
+// GeoJSONとして保存する関数
+function downloadGeoJSON() {
+    if (path.length === 0) {
+        alert("まだ位置データがありません");
+        return;
+    }
+
+    const geojson = {
+        type: "Feature",
+        geometry: {
+            type: "LineString",
+            coordinates: path.map(coord => [coord[1], coord[0]])  // [lng, lat]
+        },
+        properties: {
+            timestamp: new Date().toISOString()
+        }
+    };
+
+    const blob = new Blob([JSON.stringify(geojson, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "path.geojson";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
+// ダウンロードボタンを地図に追加
+const downloadButton = L.control({ position: 'topright' });
+downloadButton.onAdd = function(map) {
+    const btn = L.DomUtil.create('button', '');
+    btn.innerHTML = 'Download GeoJSON';
+    btn.style.backgroundColor = 'white';
+    btn.style.padding = '5px';
+    btn.style.cursor = 'pointer';
+    btn.onclick = downloadGeoJSON;
+    return btn;
+};
+downloadButton.addTo(window.map);
+</script>
 </html>
