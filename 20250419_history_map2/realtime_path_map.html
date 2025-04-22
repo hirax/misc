@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_c693a0de8c67cb887ef842cc0b4460f8 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-realtime/2.2.0/leaflet-realtime.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_c693a0de8c67cb887ef842cc0b4460f8" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_c693a0de8c67cb887ef842cc0b4460f8 = L.map(
+                "map_c693a0de8c67cb887ef842cc0b4460f8",
+                {
+                    center: [35.681236, 139.767125],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 15,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_500be44fa1d970b20534c0eaf61a0ae2 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_500be44fa1d970b20534c0eaf61a0ae2.addTo(map_c693a0de8c67cb887ef842cc0b4460f8);
+        
+    
+            var realtime_0ef5c56440e3971277cd6c232f6a879e_options = {"interval": 1000, "removeMissing": false, "start": true};
+            
+            realtime_0ef5c56440e3971277cd6c232f6a879e_options["getFeatureId"] = <function <lambda> at 0x13af8e200>;
+            
+
+            var realtime_0ef5c56440e3971277cd6c232f6a879e = L.realtime(
+            "\nlet path = [];\nfunction handleLocationUpdate(position) {\n    const lat = position.coords.latitude;\n    const lng = position.coords.longitude;\n    const timestamp = new Date().toISOString();\n    \n    // \u5ea7\u6a19\u3092\u30d1\u30b9\u306b\u8ffd\u52a0\n    path.push([lat, lng]);\n    \n    // \u30b5\u30fc\u30d0\u30fc\u306b\u9001\u4fe1\u3059\u308b\u30c7\u30fc\u30bf\n    const data = {\n        type: \u0027Feature\u0027,\n        geometry: {\n            type: \u0027LineString\u0027,\n            coordinates: path.map(coord =\u003e [coord[1], coord[0]])\n        },\n        properties: {\n            time: timestamp\n        }\n    };\n    \n    // Folium Realtime\u306b\u30c7\u30fc\u30bf\u3092\u9001\u4fe1\n    window.dispatchEvent(new CustomEvent(\u0027folium-realtime-update\u0027, {\n        detail: data\n    }));\n}\n\n// \u4f4d\u7f6e\u60c5\u5831\u53d6\u5f97\u30a8\u30e9\u30fc\u51e6\u7406\nfunction handleLocationError(error) {\n    console.error(\u0027Location error:\u0027, error);\n}\n\n// \u4f4d\u7f6e\u60c5\u5831\u306e\u76e3\u8996\u3092\u958b\u59cb\nif (navigator.geolocation) {\n    navigator.geolocation.watchPosition(handleLocationUpdate, handleLocationError, {\n        enableHighAccuracy: true,\n        timeout: 5000,\n        maximumAge: 0\n    });\n} else {\n    console.error(\u0027Geolocation is not supported by this browser.\u0027);\n}\n",
+            realtime_0ef5c56440e3971277cd6c232f6a879e_options
+            );
+            map_c693a0de8c67cb887ef842cc0b4460f8.addLayer(
+                realtime_0ef5c56440e3971277cd6c232f6a879e._container);
+        
+    
+            realtime_0ef5c56440e3971277cd6c232f6a879e.addTo(map_c693a0de8c67cb887ef842cc0b4460f8);
+        
+</script>
+</html>
